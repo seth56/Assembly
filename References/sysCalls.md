@@ -1,12 +1,8 @@
-# System Calls Reference
-
-Values placed in the %ax register before syscall or int0x80
-
-| System Call      | Value |
-| ----------- | ----------- |
+| System Call | ID | Arg1 | Arg2 | Arg3 |
+| - | - | - | - | - |
 |**sys_read**|0| 
 |**sys_write**|1| 
-|**sys_open**|2| 
+|**sys_open**|2| $filename | #flags | #mode |
 |**sys_close**|3| 
 |**sys_stat**|4| 
 |**sys_fstat**|5| 

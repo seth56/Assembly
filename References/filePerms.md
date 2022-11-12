@@ -1,6 +1,6 @@
 # File Permissions Reference
 
-Perms written as 0x0000
+Perms written as 0x0000 (Special, Owner, Group, Other)
 In order from most significant bit to least significant bit
   - Special
   - Owner
@@ -9,6 +9,7 @@ In order from most significant bit to least significant bit
 
 **Example:**
   - 0x0700 gives the owner all permissions and everyone else none
+
 
 | Value | Read | Write | Execute |
 | - | - | - | - |

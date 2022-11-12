@@ -40,7 +40,7 @@ Look up [System Call] flags to get flag options
 |**sys_dup**|32| 
 |**sys_dup2**|33| 
 |**sys_pause**|34| 
-|**sys_nanosleep**|35| $timespec | $timespec/0 |
+|**sys_nanosleep**|35| $timespec | $timespec or 0 |
 |**sys_getitimer**|36| 
 |**sys_alarm**|37| 
 |**sys_setitimer**|38| 

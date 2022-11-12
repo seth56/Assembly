@@ -1,6 +1,7 @@
 # File Permissions Reference
 
 Perms written as 0x0000 (Special, Owner, Group, Other)
+
 In order from most significant bit to least significant bit
   - Special
   - Owner

@@ -3,11 +3,11 @@
 Values placed in %ax register before a syscall or interrupt  
 Look up [System Call] flags to get flag options
 
-| System Call | ID | Arg1 | Arg2 | Arg3 |
-| - | - | - | - | - |
+| System Call | ID | Arg1 | Arg2 | Arg3 | Returns |
+| - | - | - | - | - | - |
 |**sys_read**|0| 
 |**sys_write**|1| 
-|**sys_open**|2| $filename | #flags | #permissions |
+|**sys_open**|2| $filename | #flags | #permissions | File Descriptor\Error in RAX |
 |**sys_close**|3| 
 |**sys_stat**|4| 
 |**sys_fstat**|5| 

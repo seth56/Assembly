@@ -6,9 +6,9 @@ Look up [System Call] flags to get flag options
 | System Call | ID | Arg1 | Arg2 | Arg3 | Returns |
 | - | - | - | - | - | - |
 |**sys_read**|0| 
-|**sys_write**|1| 
-|**sys_open**|2| $filename | #flags | #permissions | File Descriptor\Error in RAX |
-|**sys_close**|3| 
+|**sys_write**|1| #filedescriptor | $buffer | #count | 
+|**sys_open**|2| $filename | #flags | #permissions | filedescriptor\error in RAX |
+|**sys_close**|3| #filedescriptor | | | filedescriptor pushed onto stack |
 |**sys_stat**|4| 
 |**sys_fstat**|5| 
 |**sys_lstat**|6| 

@@ -1,3 +1,7 @@
+# System Calls Reference
+
+Values placed in the %ax register before syscall or int0x80
+
 | System Call      | Value |
 | ----------- | ----------- |
 |**sys_read**|0| 

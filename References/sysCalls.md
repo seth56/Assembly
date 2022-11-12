@@ -9,11 +9,11 @@ Look up [System Call] flags to get flag options
 
 | System Call | ID | Arg1 | Arg2 | Arg3 | Details |
 | - | - | - | - | - | - |
-|**sys_read**|0| #filedescriptor | $buffer | #count |
-|**sys_write**|1| #filedescriptor | $buffer | #count | 
-|**sys_open**|2| $pathname | #flags | #permissions or #mode | | | returns filedescriptor\error in RAX |
-|**sys_close**|3| #filedescriptor |
-|**sys_stat**|4| $pathname | $buffer |
+|**sys_read**|0| #filedescriptor | $buffer | #count | [Info](https://man7.org/linux/man-pages/man2/read.2.html) |
+|**sys_write**|1| #filedescriptor | $buffer | #count | [Info](https://man7.org/linux/man-pages/man2/write.2.html) |
+|**sys_open**|2| $address | #flags | #permissions or #mode | | | [Info](https://man7.org/linux/man-pages/man2/open.2.html) |
+|**sys_close**|3| #filedescriptor | | | [Info](https://man7.org/linux/man-pages/man2/close.2.html) |
+|**sys_stat**|4| $address | $buffer |
 |**sys_fstat**|5| 
 |**sys_lstat**|6| 
 |**sys_poll**|7| #filedescriptor | #requestedevents | #returnedevents |
@@ -30,12 +30,12 @@ Look up [System Call] flags to get flag options
 |**sys_pwrite64**|18| 
 |**sys_readv**|19| 
 |**sys_writev**|20| 
-|**sys_access**|21| $pathname | #permissions or #mode |
+|**sys_access**|21| $address | #permissions or #mode |
 |**sys_pipe**|22| #filedescriptor |
 |**sys_select**|23| 
 |**sys_sched_yield**|24| void |
-|**sys_mremap**|25| $pathname | #old_len | #new_len | #flags and $newpathname |
-|**sys_msync**|26| 
+|**sys_mremap**|25| $address | #old_len | #new_len | #flags and $newaddress |
+|**sys_msync**|26| $address | 
 |**sys_mincore**|27| 
 |**sys_madvise**|28| 
 |**sys_shmget**|29| 
@@ -46,7 +46,7 @@ Look up [System Call] flags to get flag options
 |**sys_pause**|34| 
 |**sys_nanosleep**|35| $timespec | $timespec or 0 |
 |**sys_getitimer**|36| 
-|**sys_alarm**|37| 
+|**sys_alarm**|37| #seconds |
 |**sys_setitimer**|38| 
 |**sys_getpid**|39| 
 |**sys_sendfile**|40| 

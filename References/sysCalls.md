@@ -5,6 +5,8 @@ Look up [System Call] flags to get flag options
 
 [System Calls Manual](https://man7.org/linux/man-pages/man2/pipe.2.html)
 
+[System Call Arguments](https://elixir.bootlin.com/linux/v4.4/source/include/linux/syscalls.h)
+
 | System Call | ID | Arg1 | Arg2 | Arg3 | Details |
 | - | - | - | - | - | - |
 |**sys_read**|0| #filedescriptor | $buffer | #count |

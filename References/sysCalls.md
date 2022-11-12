@@ -11,7 +11,7 @@ Look up [System Call] flags to get flag options
 | - | - | - | - | - | - |
 |**sys_read**|0| #filedescriptor | $buffer | #count | [Info](https://man7.org/linux/man-pages/man2/read.2.html) |
 |**sys_write**|1| #filedescriptor | $buffer | #count | [Info](https://man7.org/linux/man-pages/man2/write.2.html) |
-|**sys_open**|2| $address | #flags | #permissions or #mode | | [Info](https://man7.org/linux/man-pages/man2/open.2.html) |
+|**sys_open**|2| $address | #flags | #permissions or #mode | [Info](https://man7.org/linux/man-pages/man2/open.2.html) |
 |**sys_close**|3| #filedescriptor | | | [Info](https://man7.org/linux/man-pages/man2/close.2.html) |
 |**sys_stat**|4| $address | $buffer |
 |**sys_fstat**|5| 

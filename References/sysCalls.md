@@ -7,7 +7,7 @@ Look up [System Call] flags to get flag options
 | - | - | - | - | - |
 |**sys_read**|0| 
 |**sys_write**|1| 
-|**sys_open**|2| $filename | #flags | #mode |
+|**sys_open**|2| $filename | #flags | #permissions |
 |**sys_close**|3| 
 |**sys_stat**|4| 
 |**sys_fstat**|5| 

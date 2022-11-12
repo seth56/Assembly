@@ -7,7 +7,7 @@ Look up [System Call] flags to get flag options
 | - | - | - | - | - | - |
 |**sys_read**|0| 
 |**sys_write**|1| #filedescriptor | $buffer | #count | 
-|**sys_open**|2| $filename | #flags | #permissions | filedescriptor\error in RAX |
+|**sys_open**|2| $filename | #flags | #permissions | filedescriptor or error in RAX |
 |**sys_close**|3| #filedescriptor | | | filedescriptor pushed onto stack |
 |**sys_stat**|4| 
 |**sys_fstat**|5| 

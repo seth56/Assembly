@@ -5,10 +5,10 @@ Look up [System Call] flags to get flag options
 
 | System Call | ID | Arg1 | Arg2 | Arg3 | Returns |
 | - | - | - | - | - | - |
-|**sys_read**|0| 
+|**sys_read**|0| #filedescriptor | $buffer | #count |
 |**sys_write**|1| #filedescriptor | $buffer | #count | 
-|**sys_open**|2| $filename | #flags | #permissions | filedescriptor or error into RAX |
-|**sys_close**|3| #filedescriptor | | | filedescriptor pushed into stack |
+|**sys_open**|2| $filename | #flags | #permissions | filedescriptor\error in RAX |
+|**sys_close**|3| #filedescriptor |
 |**sys_stat**|4| 
 |**sys_fstat**|5| 
 |**sys_lstat**|6| 
@@ -40,7 +40,7 @@ Look up [System Call] flags to get flag options
 |**sys_dup**|32| 
 |**sys_dup2**|33| 
 |**sys_pause**|34| 
-|**sys_nanosleep**|35| 
+|**sys_nanosleep**|35| $timespec | $timespec/0 |
 |**sys_getitimer**|36| 
 |**sys_alarm**|37| 
 |**sys_setitimer**|38| 

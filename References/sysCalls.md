@@ -1,4 +1,4 @@
-| Call      | Number |
+| System Call      | Value |
 | ----------- | ----------- |
 |**sys_read**|0| 
 |**sys_write**|1| 

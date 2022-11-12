@@ -1,4 +1,6 @@
-1. **AAA** - Ascii Adjust for Additio 
+ # OPERATION CODES REFERENCE
+ 
+ 1. **AAA** - Ascii Adjust for Additio 
  2. **AAD** - Ascii Adjust for Divisio 
  3. **AAM** - Ascii Adjust for Multiplicatio 
  4. **AAS** - Ascii Adjust for Subtractio 

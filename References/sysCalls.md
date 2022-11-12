@@ -80,7 +80,7 @@ Look up [System Call] flags to get flag options
 |**sys_fcntl**|72| 
 |**sys_flock**|73| 
 |**sys_fsync**|74| 
-|**sys_fdatasync**|75| 
+|**sys_fdatasync**|75|
 |**sys_truncate**|76| 
 |**sys_ftruncate**|77| 
 |**sys_getdents**|78| 
@@ -88,7 +88,7 @@ Look up [System Call] flags to get flag options
 |**sys_chdir**|80| 
 |**sys_fchdir**|81| 
 |**sys_rename**|82| 
-|**sys_mkdir**|83| 
+|**sys_mkdir**|83| $buffer | #filedescriptor |
 |**sys_rmdir**|84| 
 |**sys_creat**|85| 
 |**sys_link**|86| 

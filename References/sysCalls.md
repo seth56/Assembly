@@ -8,7 +8,7 @@ Look up [System Call] flags to get flag options
 [System Call Arguments](https://elixir.bootlin.com/linux/v4.4/source/include/linux/syscalls.h)
 
 | System Call | ID | Arg1 | Arg2 | Arg3 | Arg4 | Arg5 | Details |
-| - | - | - | - | - | - |
+| - | - | - | - | - | - | - | - |
 |**sys_read**|0| #filedescriptor | $buffer | #count |
 |**sys_write**|1| #filedescriptor | $buffer | #count | 
 |**sys_open**|2| $pathname | #flags | #permissions or #mode | | | returns filedescriptor\error in RAX |

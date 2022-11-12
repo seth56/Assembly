@@ -1,3 +1,8 @@
+# System Calls References 
+
+Values placed in %ax register before a syscall or interrupt  
+Look up [System Call] flags to get flag options
+
 | System Call | ID | Arg1 | Arg2 | Arg3 |
 | - | - | - | - | - |
 |**sys_read**|0| 

@@ -1,4 +1,4 @@
-# SYS CALLS REFERENCE
+# SYSTEM CALLS REFERENCE
 
 sys_read = **0**   
 sys_write = **1**   

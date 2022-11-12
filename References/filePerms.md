@@ -1,6 +1,7 @@
 # File Permissions Reference
 
 | Value | Read | Write | Execute |
+| - | - | - | - |
 | 0 | 0 | 0 | 0 |
 | 1 | 0 | 0 | **1** |
 | 2 | 0 | **1** | 0 |

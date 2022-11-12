@@ -7,8 +7,8 @@ Look up [System Call] flags to get flag options
 
 [System Call Arguments](https://elixir.bootlin.com/linux/v4.4/source/include/linux/syscalls.h)
 
-| System Call | ID | Arg1 | Arg2 | Arg3 | Arg4 | Arg5 | Details |
-| - | - | - | - | - | - | - | - |
+| System Call | ID | Arg1 | Arg2 | Arg3 | Details |
+| - | - | - | - | - | - |
 |**sys_read**|0| #filedescriptor | $buffer | #count |
 |**sys_write**|1| #filedescriptor | $buffer | #count | 
 |**sys_open**|2| $pathname | #flags | #permissions or #mode | | | returns filedescriptor\error in RAX |
@@ -34,7 +34,7 @@ Look up [System Call] flags to get flag options
 |**sys_pipe**|22| #filedescriptor |
 |**sys_select**|23| 
 |**sys_sched_yield**|24| void |
-|**sys_mremap**|25| $pathname | #old_len | #new_len | #flags | $newpathname | 
+|**sys_mremap**|25| $pathname | #old_len | #new_len | #flags and $newpathname |
 |**sys_msync**|26| 
 |**sys_mincore**|27| 
 |**sys_madvise**|28| 

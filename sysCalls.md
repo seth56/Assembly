@@ -1,4 +1,6 @@
-| **sys_read** | 0  | 
+ | Call      | Number |
+ | ----------- | ----------- |
+ | **sys_read** | 0  | 
  | **sys_write** | 1  | 
  | **sys_open** | 2  | 
  | **sys_close** | 3  | 

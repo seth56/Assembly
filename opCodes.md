@@ -1,155 +1,157 @@
- # OPERATION CODES REFERENCE
- 
- 1. **AAA** - Ascii Adjust for Additio 
- 2. **AAD** - Ascii Adjust for Divisio 
- 3. **AAM** - Ascii Adjust for Multiplicatio 
- 4. **AAS** - Ascii Adjust for Subtractio 
- 5. **ADC** - Add With Carr 
- 6. **ADD** - Arithmetic Additio 
- 7. **AND** - Logical An 
- 8. **ARPL** - Adjusted Requested Privilege Level of Selecto 
- 9. **BOUND** - Array Index Bound Chec 
- 10. **BSF** - Bit Scan Forwar 
- 11. **BSR** - Bit Scan Revers 
- 12. **BSWAP** - Byte Swap 
- 13. **BT** - Bit Test 
- 14. **BTC** - Bit Test with Compliment  
- 15. **BTR** - Bit Test with Reset  
- 16. **BTS** - Bit Test and Set  
- 17. **CALL** - Procedure Cal 
- 18. **CBW** - Convert Byte to Wor 
- 19. **CDQ** - Convert Double to Qua 
- 20. **CLC** - Clear Carr 
- 21. **CLD** - Clear Direction Fla 
- 22. **CLI** - Clear Interrupt Fla 
- 23. **CLTS** - Clear Task Switched Fla 
- 24. **CMC** - Complement Carry Fla 
- 25. **CMP** - Compar 
- 26. **CMPS** - Compare String 
- 27. **CMPXCHG** - Compare and Exchang 
- 28. **CWD** - Convert Word to Doublewor 
- 29. **CWDE** - Convert Word to Extended Doublewor 
- 30. **DAA** - Decimal Adjust for Additio 
- 31. **DAS** - Decimal Adjust for Subtractio 
- 32. **DEC** - Decremen 
- 33. **DIV** - Divid 
- 34. **ENTER** - Make Stack Fram 
- 35. **ESC** - Escap 
- 36. **Floating point instuctions** - no description 
- 37. **HLT** - Halt CP 
- 38. **IDIV** - Signed Integer Divisio 
- 39. **IMUL** - Signed Multipl 
- 40. **IN** - Input Byte or Word From Por 
- 41. **INC** - Incremen 
- 42. **INS** - Input String from Por 
- 43. **INT** - Interrup 
- 44. **INTO** - Interrupt on Overflo 
- 45. **INVD** - Invalidate Cache  
- 46. **INVLPG** - Invalidate Translation Look-Aside Buffer Entr 
- 47. **IRET/IRETD** - Interrupt Retur 
- 48. **JA/JNBE** - Jump Above / Jump Not Below or Equa 
- 49. **JAE/JNB** - Jump Above or Equal / Jump on Not Belo 
- 50. **JB/JNAE** - Jump Below / Jump Not Above or Equa 
- 51. **JBE/JNA** - Jump Below or Equal / Jump Not Abov 
- 52. **JC** - Jump on Carr 
- 53. **JCXZ/JECXZ** - Jump if Register (E)CX is Zer 
- 54. **JE/JZ** - Jump Equal / Jump Zer 
- 55. **JG/JNLE** - Jump Greater / Jump Not Less or Equa 
- 56. **JGE/JNL** - Jump Greater or Equal / Jump Not Les 
- 57. **JL/JNGE** - Jump Less / Jump Not Greater or Equa 
- 58. **JLE/JNG** - Jump Less or Equal / Jump Not Greate 
- 59. **JMP** - Unconditional Jum 
- 60. **JNC** - Jump Not Carr 
- 61. **JNE/JNZ** - Jump Not Equal / Jump Not Zer 
- 62. **JNO** - Jump Not Overflo 
- 63. **JNS** - Jump Not Signe 
- 64. **JNP/JPO** - Jump Not Parity / Jump Parity Od 
- 65. **JO** - Jump on Overflo 
- 66. **JP/JPE** - Jump on Parity / Jump on Parity Eve 
- 67. **JS** - Jump Signe 
- 68. **LAHF** - Load Register AH From Flag 
- 69. **LAR** - Load Access Right 
- 70. **LDS** - Load Pointer Using D 
- 71. **LEA** - Load Effective Addres 
- 72. **LEAVE** - Restore Stack for Procedure Exi 
- 73. **LES** - Load Pointer Using E 
- 74. **LFS** - Load Pointer Using F 
- 75. **LGDT** - Load Global Descriptor Tabl 
- 76. **LIDT** - Load Interrupt Descriptor Table 
- 77. **LGS** - Load Pointer Using GS 
- 78. **LLDT** - Load Local Descriptor Tabl 
- 79. **LMSW** - Load Machine Status Word 
- 80. **LOCK** - Lock Bu 
- 81. **LODS** - Load Strin 
- 82. **LOOP** - Decrement CX and Loop if CX Not Zer 
- 83. **LOOPE/LOOPZ** - Loop While Equal / Loop While Zer 
- 84. **LOOPNZ/LOOPNE** - Loop While Not Zero / Loop While Not Equa 
- 85. **LSL** - Load Segment Limit 
- 86. **LSS** - Load Pointer Using S 
- 87. **LTR** - Load Task Register  
- 88. **MOV** - Move Byte or Wor 
- 89. **MOVS** - Move String 
- 90. **MOVSX** - Move with Sign Extend 
- 91. **MOVZX** - Move with Zero Exten 
- 92. **MUL** - Unsigned Multipl 
- 93. **NEG** - Two's Complement Negatio 
- 94. **NOP** - No Operation 
- 95. **NOT** - One's Compliment Negatio 
- 96. **OR** - Inclusive Logical O 
- 97. **OUT** - Output Data to Por 
- 98. **OUTS** - Output String to Por 
- 99. **POP** - Pop Word off Stac 
- 100. **POPA/POPAD** - Pop All Registers onto Stac 
- 101. **POPF/POPFD** - Pop Flags off Stac 
- 102. **PUSH** - Push Word onto Stac 
- 103. **PUSHA/PUSHAD** - Push All Registers onto Stac 
- 104. **PUSHF/PUSHFD** - Push Flags onto Stac 
- 105. **RCL** - Rotate Through Carry Lef 
- 106. **RCR** - Rotate Through Carry Righ 
- 107. **REP** - Repeat String Operatio 
- 108. **REPE/REPZ** - Repeat Equal / Repeat Zer 
- 109. **REPNE/REPNZ** - Repeat Not Equal / Repeat Not Zer 
- 110. **RET/RETF** - Return From Procedur 
- 111. **ROL** - Rotate Lef 
- 112. **ROR** - Rotate Righ 
- 113. **SAHF** - Store AH Register into FLAG 
- 114. **SAL/SHL** - Shift Arithmetic Left / Shift Logical Lef 
- 115. **SAR** - Shift Arithmetic Righ 
- 116. **SBB** - Subtract with Borro 
- 117. **SCAS** - Scan String 
- 118. **SETAE/SETNB** - Set if Above or Equal / Set if Not Belo 
- 119. **SETB/SETNAE** - Set if Below / Set if Not Above or Equa 
- 120. **SETBE/SETNA** - Set if Below or Equal / Set if Not Abov 
- 121. **SETE/SETZ** - Set if Equal / Set if Zer 
- 122. **SETNE/SETNZ** - Set if Not Equal / Set if Not Zer 
- 123. **SETL/SETNGE** - Set if Less / Set if Not Greater or Equa 
- 124. **SETGE/SETNL** - Set if Greater or Equal / Set if Not Les 
- 125. **SETLE/SETNG** - Set if Less or Equal / Set if Not greater or Equa 
- 126. **SETG/SETNLE** - Set if Greater / Set if Not Less or Equa 
- 127. **SETS** - Set if Signe 
- 128. **SETNS** - Set if Not Signe 
- 129. **SETC** - Set if Carr 
- 130. **SETNC** - Set if Not Carr 
- 131. **SETO** - Set if Overflo 
- 132. **SETNO** - Set if Not Overflo 
- 133. **SETP/SETPE** - Set if Parity / Set if Parity Eve 
- 134. **SETNP/SETPO** - Set if No Parity / Set if Parity Od 
- 135. **SGDT** - Store Global Descriptor Tabl 
- 136. **SIDT** - Store Interrupt Descriptor Tabl 
- 137. **SHR** - Shift Logical Righ 
- 138. **SHLD/SHRD** - Double Precision Shif 
- 139. **SLDT** - Store Local Descriptor Tabl 
- 140. **SMSW** - Store Machine Status Wor 
- 141. **STC** - Set Carr 
- 142. **STD** - Set Direction Fla 
- 143. **STI** - Set Interrupt Fla 
- 144. **STOS** - Store String 
- 145. **STR** - Store Task Registe 
- 146. **SUB** - Subtrac 
- 147. **TEST** - Test For Bit Patter 
- 148. **VERR** - Verify Rea 
- 149. **VERW** - Verify Writ 
- 150. **WAIT/FWAIT** - Event Wai 
- 151. **WBINVD** - Write-Back and Invalidate Cach 
- 152. **XCHG** - Exchang 
- 153. **XLAT/XLATB** - Translat 
+# OPERATION CODES REFERENCE
+
+| OpCode      | Description |
+| ----------- | ----------- |
+|**AAA**|Ascii Adjust for Addition| 
+|**AAD**|Ascii Adjust for Division| 
+|**AAM**|Ascii Adjust for Multiplication| 
+|**AAS**|Ascii Adjust for Subtraction| 
+|**ADC**|Add With Carry| 
+|**ADD**|Arithmetic Addition| 
+|**AND**|Logical And| 
+|**ARPL**|Adjusted Requested Privilege Level of Selector| 
+|**BOUND**|Array Index Bound Check| 
+|**BSF**|Bit Scan Forward| 
+|**BSR**|Bit Scan Reverse| 
+|**BSWAP**|Byte Swap | 
+|**BT**|Bit Test | 
+|**BTC**|Bit Test with Compliment  | 
+|**BTR**|Bit Test with Reset  | 
+|**BTS**|Bit Test and Set  | 
+|**CALL**|Procedure Call| 
+|**CBW**|Convert Byte to Word| 
+|**CDQ**|Convert Double to Quad| 
+|**CLC**|Clear Carry| 
+|**CLD**|Clear Direction Flag| 
+|**CLI**|Clear Interrupt Flag| 
+|**CLTS**|Clear Task Switched Flag| 
+|**CMC**|Complement Carry Flag| 
+|**CMP**|Compare| 
+|**CMPS**|Compare String | 
+|**CMPXCHG**|Compare and Exchange| 
+|**CWD**|Convert Word to Doubleword| 
+|**CWDE**|Convert Word to Extended Doubleword| 
+|**DAA**|Decimal Adjust for Addition| 
+|**DAS**|Decimal Adjust for Subtraction| 
+|**DEC**|Decrement| 
+|**DIV**|Divide| 
+|**ENTER**|Make Stack Frame| 
+|**ESC**|Escape| 
+|**Floating point instuctions**|no descriptions| 
+|**HLT**|Halt CPU| 
+|**IDIV**|Signed Integer Division| 
+|**IMUL**|Signed Multiply| 
+|**IN**|Input Byte or Word From Port| 
+|**INC**|Increment| 
+|**INS**|Input String from Port| 
+|**INT**|Interrupt| 
+|**INTO**|Interrupt on Overflow| 
+|**INVD**|Invalidate Cache  | 
+|**INVLPG**|Invalidate Translation Look-Aside Buffer Entry| 
+|**IRET/IRETD**|Interrupt Return| 
+|**JA/JNBE**|Jump Above / Jump Not Below or Equal| 
+|**JAE/JNB**|Jump Above or Equal / Jump on Not Below| 
+|**JB/JNAE**|Jump Below / Jump Not Above or Equal| 
+|**JBE/JNA**|Jump Below or Equal / Jump Not Above| 
+|**JC**|Jump on Carry| 
+|**JCXZ/JECXZ**|Jump if Register (E)CX is Zero| 
+|**JE/JZ**|Jump Equal / Jump Zero| 
+|**JG/JNLE**|Jump Greater / Jump Not Less or Equal| 
+|**JGE/JNL**|Jump Greater or Equal / Jump Not Less| 
+|**JL/JNGE**|Jump Less / Jump Not Greater or Equal| 
+|**JLE/JNG**|Jump Less or Equal / Jump Not Greater| 
+|**JMP**|Unconditional Jump| 
+|**JNC**|Jump Not Carry| 
+|**JNE/JNZ**|Jump Not Equal / Jump Not Zero| 
+|**JNO**|Jump Not Overflow| 
+|**JNS**|Jump Not Signed| 
+|**JNP/JPO**|Jump Not Parity / Jump Parity Odd| 
+|**JO**|Jump on Overflow| 
+|**JP/JPE**|Jump on Parity / Jump on Parity Even| 
+|**JS**|Jump Signed| 
+|**LAHF**|Load Register AH From Flags| 
+|**LAR**|Load Access Rights| 
+|**LDS**|Load Pointer Using DS| 
+|**LEA**|Load Effective Address| 
+|**LEAVE**|Restore Stack for Procedure Exit| 
+|**LES**|Load Pointer Using ES| 
+|**LFS**|Load Pointer Using FS| 
+|**LGDT**|Load Global Descriptor Table| 
+|**LIDT**|Load Interrupt Descriptor Table | 
+|**LGS**|Load Pointer Using GS | 
+|**LLDT**|Load Local Descriptor Table| 
+|**LMSW**|Load Machine Status Word | 
+|**LOCK**|Lock Bus| 
+|**LODS**|Load String| 
+|**LOOP**|Decrement CX and Loop if CX Not Zero| 
+|**LOOPE/LOOPZ**|Loop While Equal / Loop While Zero| 
+|**LOOPNZ/LOOPNE**|Loop While Not Zero / Loop While Not Equal| 
+|**LSL**|Load Segment Limit | 
+|**LSS**|Load Pointer Using SS| 
+|**LTR**|Load Task Register  | 
+|**MOV**|Move Byte or Word| 
+|**MOVS**|Move String | 
+|**MOVSX**|Move with Sign Extend | 
+|**MOVZX**|Move with Zero Extend| 
+|**MUL**|Unsigned Multiply| 
+|**NEG**|Two's Complement Negation| 
+|**NOP**|No Operation | 
+|**NOT**|One's Compliment Negation| 
+|**OR**|Inclusive Logical OR| 
+|**OUT**|Output Data to Port| 
+|**OUTS**|Output String to Port| 
+|**POP**|Pop Word off Stack| 
+|**POPA/POPAD**|Pop All Registers onto Stack| 
+|**POPF/POPFD**|Pop Flags off Stack| 
+|**PUSH**|Push Word onto Stack| 
+|**PUSHA/PUSHAD**|Push All Registers onto Stack| 
+|**PUSHF/PUSHFD**|Push Flags onto Stack| 
+|**RCL**|Rotate Through Carry Left| 
+|**RCR**|Rotate Through Carry Right| 
+|**REP**|Repeat String Operation| 
+|**REPE/REPZ**|Repeat Equal / Repeat Zero| 
+|**REPNE/REPNZ**|Repeat Not Equal / Repeat Not Zero| 
+|**RET/RETF**|Return From Procedure| 
+|**ROL**|Rotate Left| 
+|**ROR**|Rotate Right| 
+|**SAHF**|Store AH Register into FLAGS| 
+|**SAL/SHL**|Shift Arithmetic Left / Shift Logical Left| 
+|**SAR**|Shift Arithmetic Right| 
+|**SBB**|Subtract with Borrow| 
+|**SCAS**|Scan String | 
+|**SETAE/SETNB**|Set if Above or Equal / Set if Not Below| 
+|**SETB/SETNAE**|Set if Below / Set if Not Above or Equal| 
+|**SETBE/SETNA**|Set if Below or Equal / Set if Not Above| 
+|**SETE/SETZ**|Set if Equal / Set if Zero| 
+|**SETNE/SETNZ**|Set if Not Equal / Set if Not Zero| 
+|**SETL/SETNGE**|Set if Less / Set if Not Greater or Equal| 
+|**SETGE/SETNL**|Set if Greater or Equal / Set if Not Less| 
+|**SETLE/SETNG**|Set if Less or Equal / Set if Not greater or Equal| 
+|**SETG/SETNLE**|Set if Greater / Set if Not Less or Equal| 
+|**SETS**|Set if Signed| 
+|**SETNS**|Set if Not Signed| 
+|**SETC**|Set if Carry| 
+|**SETNC**|Set if Not Carry| 
+|**SETO**|Set if Overflow| 
+|**SETNO**|Set if Not Overflow| 
+|**SETP/SETPE**|Set if Parity / Set if Parity Even| 
+|**SETNP/SETPO**|Set if No Parity / Set if Parity Odd| 
+|**SGDT**|Store Global Descriptor Table| 
+|**SIDT**|Store Interrupt Descriptor Table| 
+|**SHR**|Shift Logical Right| 
+|**SHLD/SHRD**|Double Precision Shift| 
+|**SLDT**|Store Local Descriptor Table| 
+|**SMSW**|Store Machine Status Word| 
+|**STC**|Set Carry| 
+|**STD**|Set Direction Flag| 
+|**STI**|Set Interrupt Flag| 
+|**STOS**|Store String | 
+|**STR**|Store Task Register| 
+|**SUB**|Subtract| 
+|**TEST**|Test For Bit Pattern| 
+|**VERR**|Verify Read| 
+|**VERW**|Verify Write| 
+|**WAIT/FWAIT**|Event Wait| 
+|**WBINVD**|Write-Back and Invalidate Cache| 
+|**XCHG**|Exchange| 
+|**XLAT/XLATB**|Translate| 

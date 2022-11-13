@@ -2,7 +2,7 @@
 
 Values placed in %ax register before a syscall or interrupt  
 Look up [System Call] flags to get flag options
-#fd = #filedescriptor
+#fd = #filedescriptor | #prot = #protocol
 
 A buffers and addresses are pointers to a place in memory (Variables and data). A buffer could also be a reserved space which the call writes to.
 
@@ -14,7 +14,7 @@ A buffers and addresses are pointers to a place in memory (Variables and data). 
 | - | - | - | - | - | - |
 |**sys_read**|0| #fd | $buffer | #count | [Info](https://man7.org/linux/man-pages/man2/read.2.html) Read from a file descriptor |
 |**sys_write**|1| #fd | $buffer | #count | [Info](https://man7.org/linux/man-pages/man2/write.2.html) Write to a file descriptor |
-|**sys_open**|2| $address | #flags | #permissions or #mode | [Info](https://man7.org/linux/man-pages/man2/open.2.html) Open and possibly create a file (fd returned in %ax) |
+|**sys_open**|2| $address | #flags | #perms or #mode | [Info](https://man7.org/linux/man-pages/man2/open.2.html) Open and possibly create a file (fd returned in %ax) |
 |**sys_close**|3| #fd | | | [Info](https://man7.org/linux/man-pages/man2/close.2.html) Close a file descriptor |
 |**sys_stat**|4| $address | $buffer | | [Info](https://man7.org/linux/man-pages/man2/stat.2.html) Get file status |
 |**sys_fstat**|5| #fd | $buffer | | [Info](https://man7.org/linux/man-pages/man2/fstat.2.html) Get file status |
@@ -33,86 +33,86 @@ A buffers and addresses are pointers to a place in memory (Variables and data). 
 |**sys_pwrite64**|18| #fd | $buffer | #count, #offset | [Info](https://man7.org/linux/man-pages/man2/pread64.2.html) Write to a file descriptor at a given offset |
 |**sys_readv**|19| #fd | $iov | #iovcnt | [Info](https://man7.org/linux/man-pages/man2/readv.2.html) Read from multiple buffers |
 |**sys_writev**|20| #fd | $iov | #iovcnt | [Info](https://man7.org/linux/man-pages/man2/readv.2.html) Write to multiple buffers |
-|**sys_access**|21| $address | #permissions or #mode | | [Info](https://man7.org/linux/man-pages/man2/access.2.html) Check user's permissions for a file |
+|**sys_access**|21| $address | #perms or #mode | | [Info](https://man7.org/linux/man-pages/man2/access.2.html) Check user's permissions for a file |
 |**sys_pipe**|22| #pipefd[2] | | | [Info](https://man7.org/linux/man-pages/man2/pipe.2.html) Create pipe |
 |**sys_select**|23| #nfds | #readfds | #writefds, #exceptfds, #timeout | [Info](https://man7.org/linux/man-pages/man2/select.2.html) Synchronous I/O multiplexing |
 |**sys_sched_yield**|24| void | | | [Info](https://man7.org/linux/man-pages/man2/sched_yield.2.html) Yield the processor |
 |**sys_mremap**|25| $address | #old_len | #new_len, #flags, $newaddress | [Info](https://man7.org/linux/man-pages/man2/mremap.2.html) Remap a virtual memory address |
 |**sys_msync**|26| $address | #length | #flags | [Info](https://man7.org/linux/man-pages/man2/msync.2.html) Synchronize a file with a memory map |
-|**sys_mincore**|27| 
-|**sys_madvise**|28| 
-|**sys_shmget**|29| 
-|**sys_shmat**|30| 
-|**sys_shmctl**|31| 
-|**sys_dup**|32| 
-|**sys_dup2**|33| 
-|**sys_pause**|34| 
-|**sys_nanosleep**|35| $timespec | $timespec or 0 | | [Info](https://man7.org/linux/man-pages/man2/nanosleep.2.html) |
-|**sys_getitimer**|36| 
-|**sys_alarm**|37| #seconds | | | [Info](https://man7.org/linux/man-pages/man2/alarm.2.html) |
-|**sys_setitimer**|38| 
-|**sys_getpid**|39| 
-|**sys_sendfile**|40| 
-|**sys_socket**|41| 
-|**sys_connect**|42| 
-|**sys_accept**|43| 
-|**sys_sendto**|44| 
-|**sys_recvfrom**|45| 
-|**sys_sendmsg**|46| 
-|**sys_recvmsg**|47| 
-|**sys_shutdown**|48| 
-|**sys_bind**|49| 
-|**sys_listen**|50| 
-|**sys_getsockname**|51| 
-|**sys_getpeername**|52| 
-|**sys_socketpair**|53| 
-|**sys_setsockopt**|54| 
-|**sys_getsockopt**|55| 
-|**sys_clone**|56| 
-|**sys_fork**|57| 
-|**sys_vfork**|58| 
-|**sys_execve**|59| 
-|**sys_exit**|60| 
-|**sys_wait4**|61| 
-|**sys_kill**|62| 
-|**sys_uname**|63| 
-|**sys_semget**|64| 
-|**sys_semop**|65| 
-|**sys_semctl**|66| 
-|**sys_shmdt**|67| 
-|**sys_msgget**|68| 
-|**sys_msgsnd**|69| 
-|**sys_msgrcv**|70| 
-|**sys_msgctl**|71| 
-|**sys_fcntl**|72| 
-|**sys_flock**|73| 
-|**sys_fsync**|74| 
-|**sys_fdatasync**|75|
-|**sys_truncate**|76| 
-|**sys_ftruncate**|77| 
-|**sys_getdents**|78| 
+|**sys_mincore**|27| $address | #length | $vec | [Info](https://man7.org/linux/man-pages/man2/mincore.2.html) Determine whether pages are resident in memory |
+|**sys_madvise**|28| $address | #length | #advice | [Info](https://man7.org/linux/man-pages/man2/madvise.2.html) Give advice about use of memory |
+|**sys_shmget**|29| #key | #size | #shmflag | [Info](https://man7.org/linux/man-pages/man2/shmget.2.html) Allocates a System V shared memory segment |
+|**sys_shmat**|30| #shmid | $shmaddr | #shmflg | [Info](https://man7.org/linux/man-pages/man2/shmat.2.html) System V shared memory operations |
+|**sys_shmctl**|31| #shmid | #cmd | $buffer | [Info](https://man7.org/linux/man-pages/man2/shmctl.2.html) System V shared memory control |
+|**sys_dup**|32| #fd | | | [Info](https://man7.org/linux/man-pages/man2/dup.2.html) Duplicate a file descriptor |
+|**sys_dup2**|33| #oldfd | #newfd | | [Info](https://man7.org/linux/man-pages/man2/dup.2.html) Duplicate a file descriptor |
+|**sys_pause**|34| void | | | [Info](https://man7.org/linux/man-pages/man2/pause.2.html) Wait for signal |
+|**sys_nanosleep**|35| $time | $time or 0 | | [Info](https://man7.org/linux/man-pages/man2/nanosleep.2.html) High resolution sleep |
+|**sys_getitimer**|36| #which | $currentvalue | | [Info](https://man7.org/linux/man-pages/man2/setitimer.2.html) Get value of an interval timer |
+|**sys_alarm**|37| #seconds | | | [Info](https://man7.org/linux/man-pages/man2/alarm.2.html) Set an alarm clock for delivery of a signal |
+|**sys_setitimer**|38| #which | $newvalue | #oldvalue | [Info](https://man7.org/linux/man-pages/man2/setitimer.2.html) Set value of an interval timer |
+|**sys_getpid**|39| void | | | [Info](https://man7.org/linux/man-pages/man2/getpid.2.html) Get process ID |
+|**sys_sendfile**|40| #outfd | #infd | $offset, #count | [Info](https://man7.org/linux/man-pages/man2/sendfile.2.html) Transfer data in between file descriptors |
+|**sys_socket**|41| #domain | #type | #prot | [Info](https://man7.org/linux/man-pages/man2/socket.2.html) Create an endpoint for communication |
+|**sys_connect**|42| #sockfd | $address | #addrlen | [Info](https://man7.org/linux/man-pages/man2/connect.2.html) Initiate a connection on a socket |
+|**sys_accept**|43| #sockfd | $address | #addrlen | [Info](https://man7.org/linux/man-pages/man2/accept.2.html) Accept a connection on a socket |
+|**sys_sendto**|44| #sockfd | $buffer | #len, #flags, $destaddr, #addrlen | [Info](https://man7.org/linux/man-pages/man2/sendto.2.html) Send a message on a socket |
+|**sys_recvfrom**|45| #sockfd | $buffer | #len, #flags, $srcaddr | [Info](https://man7.org/linux/man-pages/man2/sendto.2.html) Recieve a message from a socket |
+|**sys_sendmsg**|46| #sockfd | $msg flags | #flags | [Info](https://man7.org/linux/man-pages/man2/sendto.2.html) Send a message on a socket |
+|**sys_recvmsg**|47| #sockfd | $msg flags | #flags | [Info](https://man7.org/linux/man-pages/man2/sendto.2.html) Recieve a message from a socket |
+|**sys_shutdown**|48| #sockfd | #how | | [Info](https://man7.org/linux/man-pages/man2/shutdown.2.html) Shut down part of a full-duplex connection |
+|**sys_bind**|49| #sockfd | $address | #addrlen | [Info](https://man7.org/linux/man-pages/man2/sendto.2.html) Bind a name to a socket |
+|**sys_listen**|50| #spckfd | #backlog | | [Info](https://man7.org/linux/man-pages/man2/listen.2.html) Listen for connections on a socket |
+|**sys_getsockname**|51| #sockfd | $buffer | #addrlen | [Info](https://man7.org/linux/man-pages/man2/getsockname.2.html) Get socket name |
+|**sys_getpeername**|52| #sockfd | $buffer | #addrlen | [Info](https://man7.org/linux/man-pages/man2/getpeername.2.html) Get name of connected peer socket |
+|**sys_socketpair**|53| #domain | #type | #proto, #sv[2] | [Info](https://man7.org/linux/man-pages/man2/socketpair.2.html) Create a pair of connected sockets |
+|**sys_setsockopt**|54| #sockfd, #level | #optname, $optval | #optlen | [Info](https://man7.org/linux/man-pages/man2/getsockopt.2.html) Set options on a socket |
+|**sys_getsockopt**|55| #sockfd, #level | #optname, $optval | #optlen | [Info](https://man7.org/linux/man-pages/man2/getsockopt.2.html) Get options on a socket |
+|**sys_clone**|56| | | | [Info](https://man7.org/linux/man-pages/man2/clone.2.html) Create a child process |
+|**sys_fork**|57| void | | | [Info](https://man7.org/linux/man-pages/man2/fork.2.html) Create a child process |
+|**sys_vfork**|58| void | | | [Info](https://man7.org/linux/man-pages/man2/clone.2.html) Create a child process and block parent |
+|**sys_execve**|59| $address | $args | $envp | [Info](https://man7.org/linux/man-pages/man2/clone.2.html) Execute a program |
+|**sys_exit**|60| #status | | | [Info](https://man7.org/linux/man-pages/man2/exit.2.html) Terminate the calling process |
+|**sys_wait4**|61| $wstatus, #options | $rusage, #pid | $wstatus, #options | [Info](https://man7.org/linux/man-pages/man2/wait4.2.html) Wait for process to change state, BSD style |
+|**sys_kill**|62| #pid | #signal | | [Info](https://man7.org/linux/man-pages/man2/kill.2.html) Send a signal to a process |
+|**sys_uname**|63| $buffer | | | [Info](https://man7.org/linux/man-pages/man2/uname.2.html) Get name and information about current kernel |
+|**sys_semget**|64| #key | #nsems | #semflag | [Info](https://man7.org/linux/man-pages/man2/semget.2.html) Get a system v semaphore set identifier |
+|**sys_semop**|65| #semid | $sops | #nsops | [Info](https://man7.org/linux/man-pages/man2/semop.2.html) System V semaphore operations |
+|**sys_semctl**|66| #semid | #semnum | #cmd | [Info](https://man7.org/linux/man-pages/man2/semctl.2.html) System V semaphore control operations |
+|**sys_shmdt**|67| $shmaddr | | | [Info](https://man7.org/linux/man-pages/man2/shmdt.2.html) System V shared memory operations |
+|**sys_msgget**|68| #key | #msgflag | | [Info](https://man7.org/linux/man-pages/man2/msgget.2.html) Get a system v message queue ID |
+|**sys_msgsnd**|69| #msqid | $msgp | #msgsz, #msgflag | [Info](https://man7.org/linux/man-pages/man2/msgsnd.2.html) System V message queue operations |
+|**sys_msgrcv**|70| #msqid, $msgp | #msgsz, #msgtyp | #msgflag | [Info](https://man7.org/linux/man-pages/man2/msgsnd.2.html) System V message queue operations |
+|**sys_msgctl**|71| #msqid | #cmd | $buffer | [Info](https://man7.org/linux/man-pages/man2/msgctl.2.html) System V message control operations |
+|**sys_fcntl**|72| #fd | #cmd | #args | [Info](https://man7.org/linux/man-pages/man2/fcntl.2.html) Manipulate file descriptor |
+|**sys_flock**|73| #fd | #operation | | [Info](https://man7.org/linux/man-pages/man2/flock.2.html) Aply or remove an advisory lock on an open file |
+|**sys_fsync**|74| #fd | | | [Info](https://man7.org/linux/man-pages/man2/fsync.2.html) Synchronize a file's om-core state with storage device |
+|**sys_fdatasync**|75| #fd | | | [Info](https://man7.org/linux/man-pages/man2/fsync.2.html) Synchronize a file's om-core state with storage device |
+|**sys_truncate**|76| $address | #length | | [Info](https://man7.org/linux/man-pages/man2/truncate.2.html) Truncate a file to a specific length |
+|**sys_ftruncate**|77| #fd | #length | | [Info](https://man7.org/linux/man-pages/man2/truncate.2.html) Truncate a file to a specific length |
+|**sys_getdents**|78| #fd | $address | #count | [Info](https://man7.org/linux/man-pages/man2/getdents.2.html) Get directory entries |
 |**sys_getcwd**|79| $buffer | #size | | [Info](https://man7.org/linux/man-pages/man2/getcwd.2.html)  CWD is returned to the $buffer of length #size) |
 |**sys_chdir**|80| $address | | | [Info](https://man7.org/linux/man-pages/man2/chdir.2.html)   Change directory |
 |**sys_fchdir**|81| #fd | | | [Info](https://man7.org/linux/man-pages/man2/fchdir.2.html) |
 |**sys_rename**|82| #oldname | #newname | | [Info](https://man7.org/linux/man-pages/man2/rename.2.html)   Change the name or location of a file |
 |**sys_mkdir**|83| $buffer | #fd | | [Info](https://man7.org/linux/man-pages/man2/mkdir.2.html)   Make a directory |
 |**sys_rmdir**|84| $address | | | [Info](https://man7.org/linux/man-pages/man2/rmdir.2.html)   Remove a directory |
-|**sys_creat**|85| 
+|**sys_creat**|85| $address | #perms or #mode | | [Info](https://man7.org/linux/man-pages/man2/creat.2.html) Open and possibly create a file |
 |**sys_link**|86| #oldname | #newname | | [Info](https://man7.org/linux/man-pages/man2/link.2.html)   Make a new name for a file (new addr) |
 |**sys_unlink**|87| #address | | | [Info](https://man7.org/linux/man-pages/man2/unlinkat.2.html)   Delete a name (addr) and possibly the file it refers to |
-|**sys_symlink**|88| 
-|**sys_readlink**|89| 
-|**sys_chmod**|90| $address | #permissions or #mode | | [Info](https://man7.org/linux/man-pages/man2/chmod.2.html)   Change Permissions of a file |
-|**sys_fchmod**|91| #fd | #permissions or #mode | | [Info](https://man7.org/linux/man-pages/man2/fchmod.2.html)   Change Permissions of a file |
-|**sys_chown**|92| $address | #owner | #group | [Info](https://man7.org/linux/man-pages/man2/chown.2.html)   Change Ownership of a file |
-|**sys_fchown**|93| #fidledescriptor | #owner | #group | [Info](https://man7.org/linux/man-pages/man2/fchown.2.html)   Change Ownership of a file |
-|**sys_lchown**|94| 
-|**sys_umask**|95| 
-|**sys_gettimeofday**|96| #tv or #timeval | #tz or #timezone | | [Info](https://man7.org/linux/man-pages/man2/settimeofday.2.html)   Get time of day |
-|**sys_getrlimit**|97| | | | [Info](https://man7.org/linux/man-pages/man2/getrlimit.2.html)   Get resource limit |
-|**sys_getrusage**|98| | | | [Info](https://man7.org/linux/man-pages/man2/getrusage.2.html)   Get resource usage |
-|**sys_sysinfo**|99| $info | | | [Info](https://man7.org/linux/man-pages/man2/sysinfo.2.html)   Return system information |
-|**sys_times**|100| 
+|**sys_symlink**|88| $target | $linkpath | | [Info](https://man7.org/linux/man-pages/man2/symlink.2.html) Make a new name for a file |
+|**sys_readlink**|89| $address | $buffer | #len | [Info](https://man7.org/linux/man-pages/man2/readlink.2.html) Read value of a symbolic link |
+|**sys_chmod**|90| $address | #perms or #mode | | [Info](https://man7.org/linux/man-pages/man2/chmod.2.html) Change Permissions of a file |
+|**sys_fchmod**|91| #fd | #perms or #mode | | [Info](https://man7.org/linux/man-pages/man2/fchmod.2.html) Change Permissions of a file |
+|**sys_chown**|92| $address | #owner | #group | [Info](https://man7.org/linux/man-pages/man2/chown.2.html) Change Ownership of a file |
+|**sys_fchown**|93| #fd | #owner | #group | [Info](https://man7.org/linux/man-pages/man2/fchown.2.html) Change Ownership of a file |
+|**sys_lchown**|94| $address | #owner | #group | [Info](https://man7.org/linux/man-pages/man2/chown.2.html) Change Ownership of a file |
+|**sys_umask**|95| #mask | | | [Info](https://man7.org/linux/man-pages/man2/umask.2.html) Set a file mode creation mask |
+|**sys_gettimeofday**|96| #tv or #timeval | #tz or #timezone | | [Info](https://man7.org/linux/man-pages/man2/settimeofday.2.html) Get time of day |
+|**sys_getrlimit**|97| | | | [Info](https://man7.org/linux/man-pages/man2/getrlimit.2.html) Get resource limit |
+|**sys_getrusage**|98| | | | [Info](https://man7.org/linux/man-pages/man2/getrusage.2.html) Get resource usage |
+|**sys_sysinfo**|99| $info | | | [Info](https://man7.org/linux/man-pages/man2/sysinfo.2.html) Return system information |
+|**sys_times**|100| $buffer | | | [Info](https://man7.org/linux/man-pages/man2/times.2.html) Get process times |
 |**sys_ptrace**|101| 
 |**sys_getuid**|102| 
 |**sys_syslog**|103| 
@@ -122,7 +122,7 @@ A buffers and addresses are pointers to a place in memory (Variables and data). 
 |**sys_geteuid**|107| 
 |**sys_getegid**|108| 
 |**sys_setpgid**|109| 
-|**sys_getppid**|110| 
+|**sys_getppid**|110| void | | | [Info](https://man7.org/linux/man-pages/man2/getpid.2.html) Get process ID |
 |**sys_getpgrp**|111| 
 |**sys_setsid**|112| 
 |**sys_setreuid**|113| 
@@ -232,7 +232,7 @@ A buffers and addresses are pointers to a place in memory (Variables and data). 
 |**sys_getdents64**|217| 
 |**sys_set_tid_address**|218| 
 |**sys_restart_syscall**|219| 
-|**sys_semtimedop**|220| 
+|**sys_semtimedop**|220| #semid | $sops | #nsops, $timeout | [Info](https://man7.org/linux/man-pages/man2/semop.2.html) System V semaphore operations |
 |**sys_fadvise64**|221| 
 |**sys_timer_create**|222| 
 |**sys_timer_settime**|223| 
@@ -269,7 +269,7 @@ A buffers and addresses are pointers to a place in memory (Variables and data). 
 |**sys_inotify_add_watch**|254| 
 |**sys_inotify_rm_watch**|255| 
 |**sys_migrate_pages**|256| 
-|**sys_openat**|257| 
+|**sys_openat**|257| #dirfd | $address | #flags, #mode | [Info](https://man7.org/linux/man-pages/man2/creat.2.html) Open and possibly create a file |
 |**sys_mkdirat**|258| 
 |**sys_mknodat**|259| 
 |**sys_fchownat**|260| 
@@ -300,7 +300,7 @@ A buffers and addresses are pointers to a place in memory (Variables and data). 
 |**sys_fallocate**|285| 
 |**sys_timerfd_settime**|286| 
 |**sys_timerfd_gettime**|287| 
-|**sys_accept4**|288| 
+|**sys_accept4**|288| #sockfd | $address | #addrlen, #flags | [Info](https://man7.org/linux/man-pages/man2/accept.2.html) Accept a connection on a socket |
 |**sys_signalfd4**|289| 
 |**sys_eventfd2**|290| 
 |**sys_epoll_create1**|291| 

@@ -88,7 +88,7 @@ Look up [System Call] flags to get flag options
 |**sys_truncate**|76| 
 |**sys_ftruncate**|77| 
 |**sys_getdents**|78| 
-|**sys_getcwd**|79| $buffer | #size | | [Info](https://man7.org/linux/man-pages/man2/getcwd.2.html  CWD is returned to the $buffer of length #size) |
+|**sys_getcwd**|79| $buffer | #size | | [Info](https://man7.org/linux/man-pages/man2/getcwd.2.html)  CWD is returned to the $buffer of length #size) |
 |**sys_chdir**|80| $address | | | [Info](https://man7.org/linux/man-pages/man2/chdir.2.html)   Change directory |
 |**sys_fchdir**|81| #filedescriptor | | | [Info](https://man7.org/linux/man-pages/man2/fchdir.2.html) |
 |**sys_rename**|82| #oldname | #newname | | [Info](https://man7.org/linux/man-pages/man2/rename.2.html)   Change the name or location of a file |

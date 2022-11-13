@@ -12,33 +12,33 @@ A buffers and addresses are pointers to a place in memory (Variables and data). 
 
 | System Call | ID | Arg1 | Arg2 | Arg3 | Details |
 | - | - | - | - | - | - |
-|**sys_read**|0| #fd | $buffer | #count | [Info](https://man7.org/linux/man-pages/man2/read.2.html)   Read from a file descriptor |
-|**sys_write**|1| #fd | $buffer | #count | [Info](https://man7.org/linux/man-pages/man2/write.2.html)   Write to a file descriptor |
-|**sys_open**|2| $address | #flags | #permissions or #mode | [Info](https://man7.org/linux/man-pages/man2/open.2.html)   Open and possibly create a file (fd returned in %ax) |
-|**sys_close**|3| #fd | | | [Info](https://man7.org/linux/man-pages/man2/close.2.html)   Close a file descriptor |
-|**sys_stat**|4| $address | $buffer | | [Info](https://man7.org/linux/man-pages/man2/stat.2.html)   Get file status |
-|**sys_fstat**|5| #fd | $buffer | | [Info](https://man7.org/linux/man-pages/man2/fstat.2.html)   Get file status |
-|**sys_lstat**|6| $address | $buffer | | [Info](https://man7.org/linux/man-pages/man2/lstat.2.html)   Get file status |
-|**sys_poll**|7| #fds | #numfds | #timeout milliseconds | [Info](https://man7.org/linux/man-pages/man2/poll.2.html)   Wait for some event on a fd |
-|**sys_lseek**|8| #fd | #offset (bytes) | #whence | [Info](https://man7.org/linux/man-pages/man2/lseek.2.html)   Reposition read/wite file offset |
-|**sys_mmap**|9| $address | #length | #prot, #fd, #offset | [Info](https://man7.org/linux/man-pages/man2/mmap.2.html)   Map files or devices into memory | 
-|**sys_mprotect**|10| $address | #length | #prot | [Info](https://man7.org/linux/man-pages/man2/mprotect.2.html)   Set protection on a region of memory |
-|**sys_munmap**|11| $address | #length | #prot, #fd, #offset | [Info](https://man7.org/linux/man-pages/man2/munmap.2.html)   Unmap files or devices from memory | 
-|**sys_brk**|12| $address | | | [Info](https://man7.org/linux/man-pages/man2/brk.2.html)   Change data segment size. Use sys_malloc | 
-|**sys_rt_sigaction**|13| #signum | #act | #oldact | [Info](https://man7.org/linux/man-pages/man2/rt_sigaction.2.html)   Examine and change a signal action | 
-|**sys_rt_sigprocmask**|14| #how | #set | #oldset | [Info](https://man7.org/linux/man-pages/man2/rt_sigaction.2.html)   Examine and change blocked signals | 
-|**sys_rt_sigreturn**|15| void | | | [Info](https://man7.org/linux/man-pages/man2/rt_sigreturn.2.html)   Return from signal handler and cleanup. Never call directly. | 
+|**sys_read**|0| #fd | $buffer | #count | [Info](https://man7.org/linux/man-pages/man2/read.2.html) Read from a file descriptor |
+|**sys_write**|1| #fd | $buffer | #count | [Info](https://man7.org/linux/man-pages/man2/write.2.html) Write to a file descriptor |
+|**sys_open**|2| $address | #flags | #permissions or #mode | [Info](https://man7.org/linux/man-pages/man2/open.2.html) Open and possibly create a file (fd returned in %ax) |
+|**sys_close**|3| #fd | | | [Info](https://man7.org/linux/man-pages/man2/close.2.html) Close a file descriptor |
+|**sys_stat**|4| $address | $buffer | | [Info](https://man7.org/linux/man-pages/man2/stat.2.html) Get file status |
+|**sys_fstat**|5| #fd | $buffer | | [Info](https://man7.org/linux/man-pages/man2/fstat.2.html) Get file status |
+|**sys_lstat**|6| $address | $buffer | | [Info](https://man7.org/linux/man-pages/man2/lstat.2.html) Get file status |
+|**sys_poll**|7| #fds | #numfds | #timeout milliseconds | [Info](https://man7.org/linux/man-pages/man2/poll.2.html) Wait for some event on a fd |
+|**sys_lseek**|8| #fd | #offset (bytes) | #whence | [Info](https://man7.org/linux/man-pages/man2/lseek.2.html) Reposition read/wite file offset |
+|**sys_mmap**|9| $address | #length | #prot, #fd, #offset | [Info](https://man7.org/linux/man-pages/man2/mmap.2.html) Map files or devices into memory | 
+|**sys_mprotect**|10| $address | #length | #prot | [Info](https://man7.org/linux/man-pages/man2/mprotect.2.html) Set protection on a region of memory |
+|**sys_munmap**|11| $address | #length | #prot, #fd, #offset | [Info](https://man7.org/linux/man-pages/man2/munmap.2.html) Unmap files or devices from memory | 
+|**sys_brk**|12| $address | | | [Info](https://man7.org/linux/man-pages/man2/brk.2.html) Change data segment size. Use sys_malloc | 
+|**sys_rt_sigaction**|13| #signum | #act | #oldact | [Info](https://man7.org/linux/man-pages/man2/rt_sigaction.2.html) Examine and change a signal action | 
+|**sys_rt_sigprocmask**|14| #how | #set | #oldset | [Info](https://man7.org/linux/man-pages/man2/rt_sigaction.2.html) Examine and change blocked signals | 
+|**sys_rt_sigreturn**|15| void | | | [Info](https://man7.org/linux/man-pages/man2/rt_sigreturn.2.html) Return from signal handler and cleanup. Never call directly. | 
 |**sys_ioctl**|16| #fd | #request | $address | [Info](https://man7.org/linux/man-pages/man2/ioctl.2.html) Control device |
 |**sys_pread64**|17| #fd | $buffer | #count, #offset | [Info](https://man7.org/linux/man-pages/man2/pread64.2.html) Read from a file descriptor at a given offset |
 |**sys_pwrite64**|18| #fd | $buffer | #count, #offset | [Info](https://man7.org/linux/man-pages/man2/pread64.2.html) Write to a file descriptor at a given offset |
 |**sys_readv**|19| #fd | $iov | #iovcnt | [Info](https://man7.org/linux/man-pages/man2/readv.2.html) Read from multiple buffers |
 |**sys_writev**|20| #fd | $iov | #iovcnt | [Info](https://man7.org/linux/man-pages/man2/readv.2.html) Write to multiple buffers |
-|**sys_access**|21| $address | #permissions or #mode | | [Info](https://man7.org/linux/man-pages/man2/access.2.html) |
-|**sys_pipe**|22| #fd | | | [Info](https://man7.org/linux/man-pages/man2/pipe.2.html) |
-|**sys_select**|23| 
-|**sys_sched_yield**|24| void | | | [Info](https://man7.org/linux/man-pages/man2/sched_yield.2.html) |
-|**sys_mremap**|25| $address | #old_len | #new_len | #flags and $newaddress   [Info](https://man7.org/linux/man-pages/man2/mremap.2.html) |
-|**sys_msync**|26| $address | | | [Info](https://man7.org/linux/man-pages/man2/msync.2.html) |
+|**sys_access**|21| $address | #permissions or #mode | | [Info](https://man7.org/linux/man-pages/man2/access.2.html) Check user's permissions for a file |
+|**sys_pipe**|22| #pipefd[2] | | | [Info](https://man7.org/linux/man-pages/man2/pipe.2.html) Create pipe |
+|**sys_select**|23| #nfds | #readfds | #writefds, #exceptfds, #timeout | [Info](https://man7.org/linux/man-pages/man2/select.2.html) Synchronous I/O multiplexing |
+|**sys_sched_yield**|24| void | | | [Info](https://man7.org/linux/man-pages/man2/sched_yield.2.html) Yield the processor |
+|**sys_mremap**|25| $address | #old_len | #new_len, #flags, $newaddress | [Info](https://man7.org/linux/man-pages/man2/mremap.2.html) Remap a virtual memory address |
+|**sys_msync**|26| $address | #length | #flags | [Info](https://man7.org/linux/man-pages/man2/msync.2.html) Synchronize a file with a memory map |
 |**sys_mincore**|27| 
 |**sys_madvise**|28| 
 |**sys_shmget**|29| 

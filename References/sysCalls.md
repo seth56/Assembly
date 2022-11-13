@@ -8,8 +8,6 @@ A buffers and addresses are pointers to a place in memory (Variables and data). 
 
 [System Calls Manual](https://man7.org/linux/man-pages/man2/pipe.2.html)
 
-[System Call Arguments](https://elixir.bootlin.com/linux/v4.4/source/include/linux/syscalls.h)
-
 | System Call | ID | Arg1 | Arg2 | Arg3 | Details |
 | - | - | - | - | - | - |
 |**sys_read**|0| #fd | $buffer | #count | [Info](https://man7.org/linux/man-pages/man2/read.2.html) Read from a file descriptor |

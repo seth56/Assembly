@@ -3,25 +3,27 @@
 Values placed in %ax register before a syscall or interrupt  
 Look up [System Call] flags to get flag options
 
+A buffers and addresses are pointers to a place in memory (Variables and data). A buffer could also be a reserved space which the call writes to.
+
 [System Calls Manual](https://man7.org/linux/man-pages/man2/pipe.2.html)
 
 [System Call Arguments](https://elixir.bootlin.com/linux/v4.4/source/include/linux/syscalls.h)
 
 | System Call | ID | Arg1 | Arg2 | Arg3 | Details |
 | - | - | - | - | - | - |
-|**sys_read**|0| #filedescriptor | $buffer | #count | [Info](https://man7.org/linux/man-pages/man2/read.2.html) |
-|**sys_write**|1| #filedescriptor | $buffer | #count | [Info](https://man7.org/linux/man-pages/man2/write.2.html) |
-|**sys_open**|2| $address | #flags | #permissions or #mode | [Info](https://man7.org/linux/man-pages/man2/open.2.html) |
-|**sys_close**|3| #filedescriptor | | | [Info](https://man7.org/linux/man-pages/man2/close.2.html) |
-|**sys_stat**|4| $address | $buffer | | [Info](https://man7.org/linux/man-pages/man2/stat.2.html) |
-|**sys_fstat**|5| 
-|**sys_lstat**|6| 
-|**sys_poll**|7| #filedescriptor | #requestedevents | #returnedevents | [Info](https://man7.org/linux/man-pages/man2/poll.2.html) |
-|**sys_lseek**|8| 
-|**sys_mmap**|9| 
-|**sys_mprotect**|10| 
-|**sys_munmap**|11| 
-|**sys_brk**|12| 
+|**sys_read**|0| #filedescriptor | $buffer | #count | [Info](https://man7.org/linux/man-pages/man2/read.2.html)   Read from a file descriptor |
+|**sys_write**|1| #filedescriptor | $buffer | #count | [Info](https://man7.org/linux/man-pages/man2/write.2.html)   Write to a file descriptor |
+|**sys_open**|2| $address | #flags | #permissions or #mode | [Info](https://man7.org/linux/man-pages/man2/open.2.html)   Open and possibly create a file (fd returned in %ax) |
+|**sys_close**|3| #filedescriptor | | | [Info](https://man7.org/linux/man-pages/man2/close.2.html)   Close a file descriptor |
+|**sys_stat**|4| $address | $buffer | | [Info](https://man7.org/linux/man-pages/man2/stat.2.html)   Get file status |
+|**sys_fstat**|5| #filedescriptor | $buffer | | [Info](https://man7.org/linux/man-pages/man2/fstat.2.html)   Get file status |
+|**sys_lstat**|6| $address | $buffer | | [Info](https://man7.org/linux/man-pages/man2/lstat.2.html)   Get file status |
+|**sys_poll**|7| #filedescriptors | #numfiledescriptors | #timeout milliseconds | [Info](https://man7.org/linux/man-pages/man2/poll.2.html)   Wait for some event on a filedescriptor |
+|**sys_lseek**|8| #filedescriptor | #offset (bytes) | #whence flags | [Info](https://man7.org/linux/man-pages/man2/lseek.2.html)   Reposition read/wite file offset |
+|**sys_mmap**|9| | | | [Info](https://man7.org/linux/man-pages/man2/mmap.2.html)   Map files or devices into memory | 
+|**sys_mprotect**|10| $address | #length | #prot flags | [Info](https://man7.org/linux/man-pages/man2/mprotect.2.html)   Set protection on a region of memory |
+|**sys_munmap**|11| | | | [Info](https://man7.org/linux/man-pages/man2/munmap.2.html)   Unmap files or devices from memory | 
+|**sys_brk**|12| $address | | | [Info](https://man7.org/linux/man-pages/man2/brk.2.html)   Change data segment size. Use sys_malloc | 
 |**sys_rt_sigaction**|13| 
 |**sys_rt_sigprocmask**|14| 
 |**sys_rt_sigreturn**|15| 

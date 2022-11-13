@@ -13,10 +13,10 @@ Look up [System Call] flags to get flag options
 |**sys_write**|1| #filedescriptor | $buffer | #count | [Info](https://man7.org/linux/man-pages/man2/write.2.html) |
 |**sys_open**|2| $address | #flags | #permissions or #mode | [Info](https://man7.org/linux/man-pages/man2/open.2.html) |
 |**sys_close**|3| #filedescriptor | | | [Info](https://man7.org/linux/man-pages/man2/close.2.html) |
-|**sys_stat**|4| $address | $buffer |
+|**sys_stat**|4| $address | $buffer | | [Info](https://man7.org/linux/man-pages/man2/stat.2.html) |
 |**sys_fstat**|5| 
 |**sys_lstat**|6| 
-|**sys_poll**|7| #filedescriptor | #requestedevents | #returnedevents |
+|**sys_poll**|7| #filedescriptor | #requestedevents | #returnedevents | [Info](https://man7.org/linux/man-pages/man2/poll.2.html) |
 |**sys_lseek**|8| 
 |**sys_mmap**|9| 
 |**sys_mprotect**|10| 
@@ -30,12 +30,12 @@ Look up [System Call] flags to get flag options
 |**sys_pwrite64**|18| 
 |**sys_readv**|19| 
 |**sys_writev**|20| 
-|**sys_access**|21| $address | #permissions or #mode |
-|**sys_pipe**|22| #filedescriptor |
+|**sys_access**|21| $address | #permissions or #mode | | [Info](https://man7.org/linux/man-pages/man2/access.2.html) |
+|**sys_pipe**|22| #filedescriptor | | | [Info](https://man7.org/linux/man-pages/man2/pipe.2.html) |
 |**sys_select**|23| 
-|**sys_sched_yield**|24| void |
-|**sys_mremap**|25| $address | #old_len | #new_len | #flags and $newaddress |
-|**sys_msync**|26| $address | 
+|**sys_sched_yield**|24| void | | | [Info](https://man7.org/linux/man-pages/man2/sched_yield.2.html) |
+|**sys_mremap**|25| $address | #old_len | #new_len | #flags and $newaddress   [Info](https://man7.org/linux/man-pages/man2/mremap.2.html) |
+|**sys_msync**|26| $address | | | [Info](https://man7.org/linux/man-pages/man2/msync.2.html) |
 |**sys_mincore**|27| 
 |**sys_madvise**|28| 
 |**sys_shmget**|29| 
@@ -44,9 +44,9 @@ Look up [System Call] flags to get flag options
 |**sys_dup**|32| 
 |**sys_dup2**|33| 
 |**sys_pause**|34| 
-|**sys_nanosleep**|35| $timespec | $timespec or 0 |
+|**sys_nanosleep**|35| $timespec | $timespec or 0 | | [Info](https://man7.org/linux/man-pages/man2/nanosleep.2.html) |
 |**sys_getitimer**|36| 
-|**sys_alarm**|37| #seconds |
+|**sys_alarm**|37| #seconds | | | [Info](https://man7.org/linux/man-pages/man2/alarm.2.html) |
 |**sys_setitimer**|38| 
 |**sys_getpid**|39| 
 |**sys_sendfile**|40| 
@@ -88,27 +88,27 @@ Look up [System Call] flags to get flag options
 |**sys_truncate**|76| 
 |**sys_ftruncate**|77| 
 |**sys_getdents**|78| 
-|**sys_getcwd**|79| 
-|**sys_chdir**|80| 
-|**sys_fchdir**|81| 
-|**sys_rename**|82| 
-|**sys_mkdir**|83| $buffer | #filedescriptor |
-|**sys_rmdir**|84| 
+|**sys_getcwd**|79| $buffer | #size | | [Info](https://man7.org/linux/man-pages/man2/getcwd.2.html  CWD is returned to the $buffer of length #size) |
+|**sys_chdir**|80| $address | | | [Info](https://man7.org/linux/man-pages/man2/chdir.2.html)   Change directory |
+|**sys_fchdir**|81| #filedescriptor | | | [Info](https://man7.org/linux/man-pages/man2/fchdir.2.html) |
+|**sys_rename**|82| #oldname | #newname | | [Info](https://man7.org/linux/man-pages/man2/rename.2.html)   Change the name or location of a file |
+|**sys_mkdir**|83| $buffer | #filedescriptor | | [Info](https://man7.org/linux/man-pages/man2/mkdir.2.html)   Make a directory |
+|**sys_rmdir**|84| $address | | | [Info](https://man7.org/linux/man-pages/man2/rmdir.2.html)   Remove a directory |
 |**sys_creat**|85| 
-|**sys_link**|86| 
-|**sys_unlink**|87| 
+|**sys_link**|86| #oldname | #newname | | [Info](https://man7.org/linux/man-pages/man2/link.2.html)   Make a new name for a file (new addr) |
+|**sys_unlink**|87| #address | | | [Info](https://man7.org/linux/man-pages/man2/unlinkat.2.html)   Delete a name (addr) and possibly the file it refers to |
 |**sys_symlink**|88| 
 |**sys_readlink**|89| 
-|**sys_chmod**|90| 
-|**sys_fchmod**|91| 
-|**sys_chown**|92| 
-|**sys_fchown**|93| 
+|**sys_chmod**|90| $address | #permissions or #mode | | [Info](https://man7.org/linux/man-pages/man2/chmod.2.html)   Change Permissions of a file |
+|**sys_fchmod**|91| #filedescriptor | #permissions or #mode | | [Info](https://man7.org/linux/man-pages/man2/fchmod.2.html)   Change Permissions of a file |
+|**sys_chown**|92| $address | #owner | #group | [Info](https://man7.org/linux/man-pages/man2/chown.2.html)   Change Ownership of a file |
+|**sys_fchown**|93| #fidledescriptor | #owner | #group | [Info](https://man7.org/linux/man-pages/man2/fchown.2.html)   Change Ownership of a file |
 |**sys_lchown**|94| 
 |**sys_umask**|95| 
-|**sys_gettimeofday**|96| 
-|**sys_getrlimit**|97| 
-|**sys_getrusage**|98| 
-|**sys_sysinfo**|99| 
+|**sys_gettimeofday**|96| #tv or #timeval | #tz or #timezone | | [Info](https://man7.org/linux/man-pages/man2/settimeofday.2.html)   Get time of day |
+|**sys_getrlimit**|97| | | | [Info](https://man7.org/linux/man-pages/man2/getrlimit.2.html)   Get resource limit |
+|**sys_getrusage**|98| | | | [Info](https://man7.org/linux/man-pages/man2/getrusage.2.html)   Get resource usage |
+|**sys_sysinfo**|99| $info | | | [Info](https://man7.org/linux/man-pages/man2/sysinfo.2.html)   Return system information |
 |**sys_times**|100| 
 |**sys_ptrace**|101| 
 |**sys_getuid**|102| 

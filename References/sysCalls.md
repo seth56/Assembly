@@ -20,9 +20,9 @@ A buffers and addresses are pointers to a place in memory (Variables and data). 
 |**sys_lstat**|6| $address | $buffer | | [Info](https://man7.org/linux/man-pages/man2/lstat.2.html)   Get file status |
 |**sys_poll**|7| #filedescriptors | #numfiledescriptors | #timeout milliseconds | [Info](https://man7.org/linux/man-pages/man2/poll.2.html)   Wait for some event on a filedescriptor |
 |**sys_lseek**|8| #filedescriptor | #offset (bytes) | #whence flags | [Info](https://man7.org/linux/man-pages/man2/lseek.2.html)   Reposition read/wite file offset |
-|**sys_mmap**|9| | | | [Info](https://man7.org/linux/man-pages/man2/mmap.2.html)   Map files or devices into memory | 
+|**sys_mmap**|9| $address | #length | #prot flags, #fd, #offset | [Info](https://man7.org/linux/man-pages/man2/mmap.2.html)   Map files or devices into memory | 
 |**sys_mprotect**|10| $address | #length | #prot flags | [Info](https://man7.org/linux/man-pages/man2/mprotect.2.html)   Set protection on a region of memory |
-|**sys_munmap**|11| | | | [Info](https://man7.org/linux/man-pages/man2/munmap.2.html)   Unmap files or devices from memory | 
+|**sys_munmap**|11| $address | #length | #prot flags, #fd, #offset | [Info](https://man7.org/linux/man-pages/man2/munmap.2.html)   Unmap files or devices from memory | 
 |**sys_brk**|12| $address | | | [Info](https://man7.org/linux/man-pages/man2/brk.2.html)   Change data segment size. Use sys_malloc | 
 |**sys_rt_sigaction**|13| 
 |**sys_rt_sigprocmask**|14| 

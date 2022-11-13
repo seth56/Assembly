@@ -2,6 +2,7 @@
 
 Values placed in %ax register before a syscall or interrupt  
 Look up [System Call] flags to get flag options
+#fd = #filedescriptor
 
 A buffers and addresses are pointers to a place in memory (Variables and data). A buffer could also be a reserved space which the call writes to.
 
@@ -11,29 +12,29 @@ A buffers and addresses are pointers to a place in memory (Variables and data). 
 
 | System Call | ID | Arg1 | Arg2 | Arg3 | Details |
 | - | - | - | - | - | - |
-|**sys_read**|0| #filedescriptor | $buffer | #count | [Info](https://man7.org/linux/man-pages/man2/read.2.html)   Read from a file descriptor |
-|**sys_write**|1| #filedescriptor | $buffer | #count | [Info](https://man7.org/linux/man-pages/man2/write.2.html)   Write to a file descriptor |
+|**sys_read**|0| #fd | $buffer | #count | [Info](https://man7.org/linux/man-pages/man2/read.2.html)   Read from a file descriptor |
+|**sys_write**|1| #fd | $buffer | #count | [Info](https://man7.org/linux/man-pages/man2/write.2.html)   Write to a file descriptor |
 |**sys_open**|2| $address | #flags | #permissions or #mode | [Info](https://man7.org/linux/man-pages/man2/open.2.html)   Open and possibly create a file (fd returned in %ax) |
-|**sys_close**|3| #filedescriptor | | | [Info](https://man7.org/linux/man-pages/man2/close.2.html)   Close a file descriptor |
+|**sys_close**|3| #fd | | | [Info](https://man7.org/linux/man-pages/man2/close.2.html)   Close a file descriptor |
 |**sys_stat**|4| $address | $buffer | | [Info](https://man7.org/linux/man-pages/man2/stat.2.html)   Get file status |
-|**sys_fstat**|5| #filedescriptor | $buffer | | [Info](https://man7.org/linux/man-pages/man2/fstat.2.html)   Get file status |
+|**sys_fstat**|5| #fd | $buffer | | [Info](https://man7.org/linux/man-pages/man2/fstat.2.html)   Get file status |
 |**sys_lstat**|6| $address | $buffer | | [Info](https://man7.org/linux/man-pages/man2/lstat.2.html)   Get file status |
-|**sys_poll**|7| #filedescriptors | #numfiledescriptors | #timeout milliseconds | [Info](https://man7.org/linux/man-pages/man2/poll.2.html)   Wait for some event on a filedescriptor |
-|**sys_lseek**|8| #filedescriptor | #offset (bytes) | #whence flags | [Info](https://man7.org/linux/man-pages/man2/lseek.2.html)   Reposition read/wite file offset |
-|**sys_mmap**|9| $address | #length | #prot flags, #fd, #offset | [Info](https://man7.org/linux/man-pages/man2/mmap.2.html)   Map files or devices into memory | 
-|**sys_mprotect**|10| $address | #length | #prot flags | [Info](https://man7.org/linux/man-pages/man2/mprotect.2.html)   Set protection on a region of memory |
-|**sys_munmap**|11| $address | #length | #prot flags, #fd, #offset | [Info](https://man7.org/linux/man-pages/man2/munmap.2.html)   Unmap files or devices from memory | 
+|**sys_poll**|7| #fds | #numfds | #timeout milliseconds | [Info](https://man7.org/linux/man-pages/man2/poll.2.html)   Wait for some event on a fd |
+|**sys_lseek**|8| #fd | #offset (bytes) | #whence | [Info](https://man7.org/linux/man-pages/man2/lseek.2.html)   Reposition read/wite file offset |
+|**sys_mmap**|9| $address | #length | #prot, #fd, #offset | [Info](https://man7.org/linux/man-pages/man2/mmap.2.html)   Map files or devices into memory | 
+|**sys_mprotect**|10| $address | #length | #prot | [Info](https://man7.org/linux/man-pages/man2/mprotect.2.html)   Set protection on a region of memory |
+|**sys_munmap**|11| $address | #length | #prot, #fd, #offset | [Info](https://man7.org/linux/man-pages/man2/munmap.2.html)   Unmap files or devices from memory | 
 |**sys_brk**|12| $address | | | [Info](https://man7.org/linux/man-pages/man2/brk.2.html)   Change data segment size. Use sys_malloc | 
-|**sys_rt_sigaction**|13| 
-|**sys_rt_sigprocmask**|14| 
-|**sys_rt_sigreturn**|15| 
-|**sys_ioctl**|16| 
-|**sys_pread64**|17| 
-|**sys_pwrite64**|18| 
-|**sys_readv**|19| 
-|**sys_writev**|20| 
+|**sys_rt_sigaction**|13| #signum | #act | #oldact | [Info](https://man7.org/linux/man-pages/man2/rt_sigaction.2.html)   Examine and change a signal action | 
+|**sys_rt_sigprocmask**|14| #how | #set | #oldset | [Info](https://man7.org/linux/man-pages/man2/rt_sigaction.2.html)   Examine and change blocked signals | 
+|**sys_rt_sigreturn**|15| void | | | [Info](https://man7.org/linux/man-pages/man2/rt_sigreturn.2.html)   Return from signal handler and cleanup. Never call directly. | 
+|**sys_ioctl**|16| #fd | #request | $address | [Info](https://man7.org/linux/man-pages/man2/ioctl.2.html) Control device |
+|**sys_pread64**|17| #fd | $buffer | #count, #offset | [Info](https://man7.org/linux/man-pages/man2/pread64.2.html) Read from a file descriptor at a given offset |
+|**sys_pwrite64**|18| #fd | $buffer | #count, #offset | [Info](https://man7.org/linux/man-pages/man2/pread64.2.html) Write to a file descriptor at a given offset |
+|**sys_readv**|19| #fd | $iov | #iovcnt | [Info](https://man7.org/linux/man-pages/man2/readv.2.html) Read from multiple buffers |
+|**sys_writev**|20| #fd | $iov | #iovcnt | [Info](https://man7.org/linux/man-pages/man2/readv.2.html) Write to multiple buffers |
 |**sys_access**|21| $address | #permissions or #mode | | [Info](https://man7.org/linux/man-pages/man2/access.2.html) |
-|**sys_pipe**|22| #filedescriptor | | | [Info](https://man7.org/linux/man-pages/man2/pipe.2.html) |
+|**sys_pipe**|22| #fd | | | [Info](https://man7.org/linux/man-pages/man2/pipe.2.html) |
 |**sys_select**|23| 
 |**sys_sched_yield**|24| void | | | [Info](https://man7.org/linux/man-pages/man2/sched_yield.2.html) |
 |**sys_mremap**|25| $address | #old_len | #new_len | #flags and $newaddress   [Info](https://man7.org/linux/man-pages/man2/mremap.2.html) |
@@ -92,9 +93,9 @@ A buffers and addresses are pointers to a place in memory (Variables and data). 
 |**sys_getdents**|78| 
 |**sys_getcwd**|79| $buffer | #size | | [Info](https://man7.org/linux/man-pages/man2/getcwd.2.html)  CWD is returned to the $buffer of length #size) |
 |**sys_chdir**|80| $address | | | [Info](https://man7.org/linux/man-pages/man2/chdir.2.html)   Change directory |
-|**sys_fchdir**|81| #filedescriptor | | | [Info](https://man7.org/linux/man-pages/man2/fchdir.2.html) |
+|**sys_fchdir**|81| #fd | | | [Info](https://man7.org/linux/man-pages/man2/fchdir.2.html) |
 |**sys_rename**|82| #oldname | #newname | | [Info](https://man7.org/linux/man-pages/man2/rename.2.html)   Change the name or location of a file |
-|**sys_mkdir**|83| $buffer | #filedescriptor | | [Info](https://man7.org/linux/man-pages/man2/mkdir.2.html)   Make a directory |
+|**sys_mkdir**|83| $buffer | #fd | | [Info](https://man7.org/linux/man-pages/man2/mkdir.2.html)   Make a directory |
 |**sys_rmdir**|84| $address | | | [Info](https://man7.org/linux/man-pages/man2/rmdir.2.html)   Remove a directory |
 |**sys_creat**|85| 
 |**sys_link**|86| #oldname | #newname | | [Info](https://man7.org/linux/man-pages/man2/link.2.html)   Make a new name for a file (new addr) |
@@ -102,7 +103,7 @@ A buffers and addresses are pointers to a place in memory (Variables and data). 
 |**sys_symlink**|88| 
 |**sys_readlink**|89| 
 |**sys_chmod**|90| $address | #permissions or #mode | | [Info](https://man7.org/linux/man-pages/man2/chmod.2.html)   Change Permissions of a file |
-|**sys_fchmod**|91| #filedescriptor | #permissions or #mode | | [Info](https://man7.org/linux/man-pages/man2/fchmod.2.html)   Change Permissions of a file |
+|**sys_fchmod**|91| #fd | #permissions or #mode | | [Info](https://man7.org/linux/man-pages/man2/fchmod.2.html)   Change Permissions of a file |
 |**sys_chown**|92| $address | #owner | #group | [Info](https://man7.org/linux/man-pages/man2/chown.2.html)   Change Ownership of a file |
 |**sys_fchown**|93| #fidledescriptor | #owner | #group | [Info](https://man7.org/linux/man-pages/man2/fchown.2.html)   Change Ownership of a file |
 |**sys_lchown**|94| 

@@ -69,7 +69,7 @@ A buffers and addresses are pointers to a place in memory (Variables and data). 
 |**sys_clone**|56| | | | [Info](https://man7.org/linux/man-pages/man2/clone.2.html) Create a child process |
 |**sys_fork**|57| void | | | [Info](https://man7.org/linux/man-pages/man2/fork.2.html) Create a child process |
 |**sys_vfork**|58| void | | | [Info](https://man7.org/linux/man-pages/man2/clone.2.html) Create a child process and block parent |
-|**sys_execve**|59| $address | $args | $envp | [Info](https://man7.org/linux/man-pages/man2/clone.2.html) Execute a program |
+|**sys_execve**|59| $address | $args | $envp | [Info](https://man7.org/linux/man-pages/man2/execve.2.html) Execute a program |
 |**sys_exit**|60| #status | | | [Info](https://man7.org/linux/man-pages/man2/exit.2.html) Terminate the calling process |
 |**sys_wait4**|61| $wstatus, #options | $rusage, #pid | $wstatus, #options | [Info](https://man7.org/linux/man-pages/man2/wait4.2.html) Wait for process to change state, BSD style |
 |**sys_kill**|62| #pid | #signal | | [Info](https://man7.org/linux/man-pages/man2/kill.2.html) Send a signal to a process |

@@ -9,7 +9,6 @@ Signals control processes
 ### Signal dispositions
 Each signal has a current disposition, which determines how the process behaves when it is delivered the signal.
 
-The table below specifies the default disposition for each signal, as follows:
 |Disposition|Description|
 |-|-|
 | Terminate |  Default action is to terminate the process. |
@@ -17,6 +16,8 @@ The table below specifies the default disposition for each signal, as follows:
 | Core |  Default action is to terminate the process and dump core |
 | Stop  | Default action is to stop the process. |
 | Continue |  Default action is to continue the process if it is currently stopped. |
+
+### List of Signals Table
 
 | Name | Number | Description |
 |-|-|-|

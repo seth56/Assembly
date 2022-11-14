@@ -1,11 +1,10 @@
 # Signal (IPC) Types and Codes Reference
 
-IPC = Interprocess communication
+IPC = Interprocess communication  
 Signals control processes 
 
-[Ref](https://www.bogotobogo.com/Linux/linux_process_and_signals.php)
-
-[Ref](https://man7.org/linux/man-pages/man7/signal.7.html)
+[Resource 1](https://www.bogotobogo.com/Linux/linux_process_and_signals.php)
+[Resource 2](https://man7.org/linux/man-pages/man7/signal.7.html)
 
 ### Signal dispositions
 Each signal has a current disposition, which determines how the process behaves when it is delivered the signal.
@@ -13,12 +12,11 @@ Each signal has a current disposition, which determines how the process behaves 
 The table below specifies the default disposition for each signal, as follows:
 |Disposition|Description|
 |-|-|
-Terminate   Default action is to terminate the process.
-Ignore    Default action is to ignore the signal.
-Core   Default action is to terminate the process and dump core
-Stop   Default action is to stop the process.
-Continue   Default action is to continue the process if it is
-            currently stopped.
+| Terminate |  Default action is to terminate the process. |
+| Ignore  |  Default action is to ignore the signal. |
+| Core |  Default action is to terminate the process and dump core |
+| Stop  | Default action is to stop the process. |
+| Continue |  Default action is to continue the process if it is currently stopped. |
 
 | Name | Number | Description |
 |-|-|-|

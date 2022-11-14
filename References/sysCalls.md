@@ -93,7 +93,7 @@ A buffers and addresses are pointers to a place in memory (Variables and data). 
 |**sys_chdir**|80| $address | | | [Info](https://man7.org/linux/man-pages/man2/chdir.2.html)   Change directory |
 |**sys_fchdir**|81| #fd | | | [Info](https://man7.org/linux/man-pages/man2/fchdir.2.html) |
 |**sys_rename**|82| #oldname | #newname | | [Info](https://man7.org/linux/man-pages/man2/rename.2.html)   Change the name or location of a file |
-|**sys_mkdir**|83| $buffer | #fd | | [Info](https://man7.org/linux/man-pages/man2/mkdir.2.html)   Make a directory |
+|**sys_mkdir**|83| $address | #mode | | [Info](https://man7.org/linux/man-pages/man2/mkdir.2.html)   Make a directory |
 |**sys_rmdir**|84| $address | | | [Info](https://man7.org/linux/man-pages/man2/rmdir.2.html)   Remove a directory |
 |**sys_creat**|85| $address | #perms or #mode | | [Info](https://man7.org/linux/man-pages/man2/creat.2.html) Open and possibly create a file |
 |**sys_link**|86| #oldname | #newname | | [Info](https://man7.org/linux/man-pages/man2/link.2.html)   Make a new name for a file (new addr) |

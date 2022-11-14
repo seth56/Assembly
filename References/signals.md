@@ -17,7 +17,7 @@ Each signal has a current disposition, which determines how the process behaves 
 | Stop  | Default action is to stop the process. |
 | Continue |  Default action is to continue the process if it is currently stopped. |
 
-### List of Signals Table
+### List of Signals
 
 | Name | Number | Description |
 |-|-|-|

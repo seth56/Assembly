@@ -4,6 +4,8 @@ Values placed in %ax register before a syscall or interrupt
 Look up [System Call] flags to get flag options
 #fd = #filedescriptor | #prot = #protocol
 
+https://linasm.sourceforge.net/docs/syscalls/index.php
+
 A buffers and addresses are pointers to a place in memory (Variables and data). A buffer could also be a reserved space which the call writes to.
 
 [System Calls Manual](https://man7.org/linux/man-pages/man2/pipe.2.html)

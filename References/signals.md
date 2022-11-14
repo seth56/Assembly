@@ -52,3 +52,31 @@ Each signal has a current disposition, which determines how the process behaves 
 |**SIGWINCH**|28| Window size change (4.3 BSD, Sun) | Ignore |
 |**SIGIO**|29| I/O now possible (4.2 BSD) | Terminate |
 |**SIGPWR**|30| Power failure restart (System V) | Terminate |
+
+
+### System Calls that send signals 
+
+| System Call | Description |
+|-|-|
+| **STANDARD** |
+| **KILL** | Sends a signal to a specified process, to all members of a specified process group, or to all processes on the system |
+| **TGKILL** | Sends a signal to a specified thread within a specific process |
+| **TKILL** | Sends a signal to a thread |
+| **PAUSE** | Sends a signal to a thread |
+| **Real Time** |
+| **RT_SIGACTION** | Examine and change a signal action |
+| **RT_SIGPROCMASK** | Examine and change blocked signals |
+| **RT_SIGPENDING** | Examine pending signals |
+| **RT_SIGQUEUEINFO** |	Queue a signal and data |
+| **RT_TGSIGQUEUEINFO** | Queue a signal and data |
+| **RT_SIGTIMEDWAIT** | Synchronously wait for queued signals |
+| **RT_SIGSUSPEND** | Wait for a signal |
+| **RT_SIGRETURN** | Return from signal handler and cleanup stack frame |
+| **SIGALTSTACK** | Set and/or get signal stack context |
+| **File Descriptor Based** |
+| **SIGNALFD** | Create a file descriptor for accepting signals |
+| **SIGNALFD4** | Create a file descriptor for accepting signals |
+| **EVENTFD** | Create a file descriptor for event notification |
+| **EVENTFD2** | Create a file descriptor for event notification |
+| **Miscellaneous** |
+| **RESTART_SYSCALL** | Restart a system call after interruption by a stop signal |

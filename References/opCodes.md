@@ -1,7 +1,7 @@
 # OPERATION CODES REFERENCE
 
-| OpCode      | Description |
-| ----------- | ----------- |
+| OpCode | Description |
+| - | - |
 |**AAA**|Ascii Adjust for Addition| 
 |**AAD**|Ascii Adjust for Division| 
 |**AAM**|Ascii Adjust for Multiplication| 
